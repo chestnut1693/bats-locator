@@ -309,8 +309,6 @@ public class BatsLocator
 	{
 		if (rotation != -1 && roomType != null && chests.size() == roomType.getChestCount())
 		{
-			//Assign chest numbers.
-			ArrayList<Chest> chests = new ArrayList<>(this.chests.values());
 			Comparator<Chest> comparator;
 			switch (rotation)
 			{
@@ -331,126 +329,48 @@ public class BatsLocator
 					comparator = comparing(Chest::getNumber);
 					break;
 			}
+
+			ArrayList<Chest> chests = new ArrayList<>(this.chests.values());
 			chests.sort(comparator);
+
 			for (int i = 0; i < chests.size(); i++)
 			{
 				chests.get(i).setNumber(i);
 			}
 
-			//Generate solution sets.
+			int[][] chestNumberSets;
+
 			switch (roomType)
 			{
 				case LEFT:
-					addSolutionSet(chests, 0, 15, 16, 54);
-					addSolutionSet(chests, 0, 16, 37, 53);
-					addSolutionSet(chests, 1, 6, 20, 36);
-					addSolutionSet(chests, 2, 4, 18, 29);
-					addSolutionSet(chests, 2, 10, 14, 39);
-					addSolutionSet(chests, 3, 21, 26, 45);
-					addSolutionSet(chests, 4, 8, 18, 44);
-					addSolutionSet(chests, 3, 8, 18, 44);		//Could be instead of (4, 8, 18, 44)).
-					addSolutionSet(chests, 5, 23, 25, 40);
-					addSolutionSet(chests, 5, 25, 31, 51);
-					addSolutionSet(chests, 6, 12, 43, 58);
-					addSolutionSet(chests, 7, 9, 27, 32);
-					addSolutionSet(chests, 7, 13, 40, 42);
-					addSolutionSet(chests, 7, 30, 46, 49);
-					addSolutionSet(chests, 9, 29, 31, 58);
-					addSolutionSet(chests, 9, 34, 53, 62);
-					addSolutionSet(chests, 11, 12, 41, 53);
-					addSolutionSet(chests, 11, 39, 52, 55);
-					addSolutionSet(chests, 12, 21, 26, 45);
-					addSolutionSet(chests, 13, 17, 22, 50);
-					addSolutionSet(chests, 13, 34, 53, 62);	//Could be instead of (9, 34, 53, 62).
-					addSolutionSet(chests, 14, 15, 41, 44);
-					addSolutionSet(chests, 14, 42, 43, 57);
-					addSolutionSet(chests, 19, 24, 31, 33);
-					addSolutionSet(chests, 19, 27, 50, 61);
-					addSolutionSet(chests, 19, 28, 44, 50);
-					addSolutionSet(chests, 20, 38, 40, 57);
-					addSolutionSet(chests, 21, 24, 53, 63);
-					addSolutionSet(chests, 22, 30, 46, 54);
-					addSolutionSet(chests, 22, 32, 36, 59);
-					addSolutionSet(chests, 23, 33, 47, 54);
-					addSolutionSet(chests, 25, 26, 49, 62);
-					addSolutionSet(chests, 28, 38, 40, 60);
-					addSolutionSet(chests, 32, 45, 51, 56);
-					addSolutionSet(chests, 33, 44, 48, 59);
-					addSolutionSet(chests, 35, 39, 41, 61);
-					addSolutionSet(chests, 36, 37, 50, 63);
-					addSolutionSet(chests, 47, 52, 54, 55);
+					chestNumberSets = ChestNumberSets.LEFT;
 					break;
 				case RIGHT:
-					addSolutionSet(chests, 0, 6, 23, 54);
-					addSolutionSet(chests, 0, 9, 20, 34);
-					addSolutionSet(chests, 1, 14, 16, 43);
-					addSolutionSet(chests, 2, 8, 21, 51);
-					addSolutionSet(chests, 2, 10, 20, 33);
-					addSolutionSet(chests, 3, 13, 18, 36);
-					addSolutionSet(chests, 3, 16, 17, 40);
-					addSolutionSet(chests, 4, 7, 29, 60);
-					addSolutionSet(chests, 4, 12, 22, 35);
-					addSolutionSet(chests, 5, 11, 53, 55);
-					addSolutionSet(chests, 5, 12, 26);
-					addSolutionSet(chests, 6, 23, 41, 72);
-					addSolutionSet(chests, 7, 8, 25, 27);
-					addSolutionSet(chests, 9, 28, 32);
-					addSolutionSet(chests, 10, 43, 46, 56);
-					addSolutionSet(chests, 11, 39, 57, 69);
-					addSolutionSet(chests, 13, 18, 45, 52);
-					addSolutionSet(chests, 14, 19, 32, 73);
-					addSolutionSet(chests, 15, 21, 39, 48);
-					addSolutionSet(chests, 17, 19, 44, 47);
-					addSolutionSet(chests, 24, 53, 61, 63);
-					addSolutionSet(chests, 26, 53, 69, 71);
-					addSolutionSet(chests, 26, 53, 69);
-					addSolutionSet(chests, 27, 29, 57, 67);
-					addSolutionSet(chests, 27, 36, 70);
-					addSolutionSet(chests, 28, 31, 43, 71);
-					addSolutionSet(chests, 30, 43, 64, 72);
-					addSolutionSet(chests, 30, 54);
-					addSolutionSet(chests, 32, 34, 61, 66);
-					addSolutionSet(chests, 33, 42, 55, 65);
-					addSolutionSet(chests, 33, 46, 68, 73);
-					addSolutionSet(chests, 35, 37, 56, 63);
-					addSolutionSet(chests, 35, 38, 48, 58);
-					addSolutionSet(chests, 39, 51, 59, 65);
-					addSolutionSet(chests, 40, 47, 60, 62);
-					addSolutionSet(chests, 41, 50, 54, 70);
-					addSolutionSet(chests, 42, 45, 52, 58);
-					addSolutionSet(chests, 44, 50, 54, 66);
+					chestNumberSets = ChestNumberSets.RIGHT;
 					break;
 				case STRAIGHT:
-					addSolutionSet(chests, 0, 39, 43, 51);
-					addSolutionSet(chests, 1, 15, 20, 53);
-					addSolutionSet(chests, 2, 10, 42, 44);
-					addSolutionSet(chests, 3, 21, 54);
-					addSolutionSet(chests, 4, 14, 38, 52);
-					addSolutionSet(chests, 5, 6, 35, 41);
-					addSolutionSet(chests, 7, 16, 34, 49);
-					addSolutionSet(chests, 9, 12, 26, 27);
-					addSolutionSet(chests, 13, 25, 30, 31);
-					addSolutionSet(chests, 15, 20, 53);
-					addSolutionSet(chests, 17, 24, 34, 58);
-					addSolutionSet(chests, 18, 23, 35, 57);
-					addSolutionSet(chests, 19, 26, 47, 65);
-					addSolutionSet(chests, 21, 33, 36, 61);
-					addSolutionSet(chests, 22, 25, 46, 55);
-					addSolutionSet(chests, 24, 34, 58);
-					addSolutionSet(chests, 28, 40, 52, 63);
-					addSolutionSet(chests, 29, 41, 42, 64);
-					addSolutionSet(chests, 30, 32, 37, 62);
-					addSolutionSet(chests, 39, 43, 51);
-					addSolutionSet(chests, 43, 45, 50, 60);
-					addSolutionSet(chests, 51, 53, 56, 59);
+					chestNumberSets = ChestNumberSets.STRAIGHT;
 					break;
+				default:
+					chestNumberSets = new int[0][0];
+					break;
+			}
+
+			for (int[] indices : chestNumberSets)
+			{
+				ArrayList<Chest> solutionSet = new ArrayList<>();
+				for (int index : indices)
+				{
+					solutionSet.add(chests.get(index));
+				}
+				solutionSets.add(solutionSet);
 			}
 
 			for (Chest chest : this.chests.values())
 			{
 				if (solutionSetsContaining(chest).size() == 0)
 				{
-					openChest(chest, Chest.State.GRUBS);
+					chest.setState(Chest.State.GRUBS);
 				}
 			}
 			for (Chest chest : poisonBatsChests)
@@ -465,16 +385,6 @@ public class BatsLocator
 			findSolutionSetCounts();
 			drawChestStates = true;
 		}
-	}
-
-	private void addSolutionSet(ArrayList<Chest> chests, int... indices)
-	{
-		ArrayList<Chest> solutionSet = new ArrayList<>();
-		for (int index : indices)
-		{
-			solutionSet.add(chests.get(index));
-		}
-		solutionSets.add(solutionSet);
 	}
 
 	public void poisonSplatEvent(WorldPoint worldPoint)

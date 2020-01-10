@@ -148,7 +148,7 @@ public class BatsLocatorPlugin extends Plugin
 		if (force || inRaidChambers != setting)
 		{
 			//A new instance is created when leaving the raid chambers instead of entering the raid chambers.
-			//Entering the raid chambers will change a varbit but game objects spawn before varbit changes.
+			//Entering the raid chambers will change the IN_RAID varbit but game objects spawn before the varbit change.
 			if (!setting)
 			{
 				batsLocator = new BatsLocator(client);
