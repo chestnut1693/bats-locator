@@ -23,14 +23,14 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package batslocator;
+package chestnut1693.batslocator;
 
-import static batslocator.BatsLocator.CLOSED;
-import static batslocator.BatsLocator.OPENED_POISON_OR_BATS;
-import static batslocator.BatsLocator.OPENED_WITHOUT_GRUBS;
-import static batslocator.BatsLocator.OPENED_WITH_GRUBS;
-import static batslocator.BatsLocator.POISON_SPLAT;
-import static batslocator.BatsLocator.TROUGH;
+import static chestnut1693.batslocator.BatsLocator.CLOSED;
+import static chestnut1693.batslocator.BatsLocator.OPENED_POISON_OR_BATS;
+import static chestnut1693.batslocator.BatsLocator.OPENED_WITHOUT_GRUBS;
+import static chestnut1693.batslocator.BatsLocator.OPENED_WITH_GRUBS;
+import static chestnut1693.batslocator.BatsLocator.POISON_SPLAT;
+import static chestnut1693.batslocator.BatsLocator.TROUGH;
 import com.google.inject.Provides;
 import javax.inject.Inject;
 import lombok.Getter;
@@ -56,7 +56,7 @@ import net.runelite.client.ui.overlay.OverlayManager;
 @Slf4j
 @PluginDescriptor(
 	name = "Bats Locator",
-	description = "Helps locating bats in the thieving room of Chambers of Xeric",
+	description = "Helps locate the chest with bats at the thieving room inside Chambers of Xeric",
 	tags = {"finder", "thieving"},
 	enabledByDefault = false
 )

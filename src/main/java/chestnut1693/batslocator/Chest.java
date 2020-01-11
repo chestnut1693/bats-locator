@@ -22,21 +22,43 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package batslocator;
+package chestnut1693.batslocator;
 
 import lombok.Getter;
+import lombok.Setter;
+import net.runelite.api.coords.WorldPoint;
 
-public enum RoomType
+public class Chest
 {
-	LEFT(64),
-	RIGHT(74),
-	STRAIGHT(66);
+	public enum State
+	{
+		UNVISITED,
+		GRUBS,
+		POISON,
+		BATS;
+	}
 
 	@Getter
-	private int chestCount;
+	@Setter
+	private State state = State.UNVISITED;
 
-	RoomType(int chestCount)
+	@Getter
+	@Setter
+	private long tickPoison = -1;
+
+	@Getter
+	@Setter
+	private int number = -1;
+
+	@Getter
+	@Setter
+	private int solutionSetCount = -1;
+
+	@Getter
+	private WorldPoint location;
+
+	public Chest(WorldPoint location)
 	{
-		this.chestCount = chestCount;
+		this.location = location;
 	}
 }

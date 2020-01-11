@@ -22,7 +22,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package batslocator;
+package chestnut1693.batslocator;
 
 import java.awt.Color;
 import net.runelite.client.config.Config;
@@ -30,7 +30,7 @@ import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 import net.runelite.client.config.Range;
 
-@ConfigGroup("batslocator")
+@ConfigGroup("chestnut1693.batslocator")
 public interface BatsLocatorConfig extends Config
 {
 	enum DisplayMode
