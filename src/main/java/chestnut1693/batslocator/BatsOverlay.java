@@ -34,6 +34,7 @@ import net.runelite.api.Player;
 import net.runelite.api.Point;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
+import net.runelite.client.ui.FontManager;
 import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayLayer;
 import net.runelite.client.ui.overlay.OverlayPosition;
@@ -91,44 +92,51 @@ public class BatsOverlay extends Overlay
 
 						if (chestCanvas != null)
 						{
-							Color dotColor;
-							Color numberColor;
+							Color color;
 
 							switch (chest.getState())
 							{
 								case UNVISITED:
-									numberColor = config.unvisitedColor();
+									color = config.unvisitedColor();
 									break;
 								case BATS:
-									numberColor = config.batsColor();
+									color = config.batsColor();
 									break;
 								case POISON:
-									numberColor = config.poisonColor();
+									color = config.poisonColor();
 									break;
 								default:
 									//This will not happen since only grubs chests reach this but they are skipped earlier on.
-									numberColor = Color.white;
+									color = Color.white;
 									break;
 							}
 
+							String chestNumber = String.valueOf(chest.getNumber());
+							graphics.setFont(FontManager.getRunescapeSmallFont());
+							int stringWidth = graphics.getFontMetrics().stringWidth(chestNumber);
+							int stringHeight = graphics.getFontMetrics().getHeight();
+
 							if (batsLocator.getSolutionSets().size() == 0 && (chest.getState() == Chest.State.POISON || chest.getState() == Chest.State.BATS))
 							{
-								OverlayUtil.renderTextLocation(graphics, chestCanvas, String.valueOf(chest.getNumber()), numberColor);
+								chestCanvas = new Point(chestCanvas.getX() - stringWidth / 2, chestCanvas.getY() - stringHeight / 2);
+								OverlayUtil.renderTextLocation(graphics, chestCanvas, chestNumber, color);
 							}
 							else
 							{
 								if (chest.getSolutionSetCount() != 0 && chest.getSolutionSetCount() == batsLocator.getHighestSolutionSetCount())
 								{
 									pie.setDiameter((int)Math.round(config.dotSize() + config.dotSize() / 3.0));
-									dotColor = new Color(numberColor.getRed(), numberColor.getGreen(), numberColor.getBlue(), 255);
+									graphics.setFont(FontManager.getRunescapeFont());
+									stringWidth = graphics.getFontMetrics().stringWidth(chestNumber);
+									stringHeight = graphics.getFontMetrics().getHeight();
 								}
 								else
 								{
 									pie.setDiameter(config.dotSize());
-									dotColor = new Color(numberColor.getRed(), numberColor.getGreen(), numberColor.getBlue(), config.dotTransparency());
+									color = new Color(color.getRed(), color.getGreen(), color.getBlue(), config.transparency());
 								}
 
-								pie.setFill(dotColor);
+								pie.setFill(color);
 								pie.setPosition(new Point(chestCanvas.getX(), chestCanvas.getY()));
 
 								switch (config.displayMode())
@@ -137,7 +145,8 @@ public class BatsOverlay extends Overlay
 										pie.render(graphics);
 										break;
 									case NUMBERS:
-										OverlayUtil.renderTextLocation(graphics, chestCanvas, String.valueOf(chest.getNumber()), numberColor);
+										chestCanvas = new Point(chestCanvas.getX() - stringWidth / 2, chestCanvas.getY() + stringHeight / 2);
+										OverlayUtil.renderTextLocation(graphics, chestCanvas, chestNumber, color);
 										break;
 								}
 							}

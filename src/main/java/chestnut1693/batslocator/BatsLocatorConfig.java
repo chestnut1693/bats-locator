@@ -73,31 +73,31 @@ public interface BatsLocatorConfig extends Config
 	}
 
 	@Range(
-		max = 255
-	)
-	@ConfigItem(
-		keyName = "dotTransparency",
-		name = "Dot transparency",
-		description = "Configures the transparency of the chest dots that are not likely to contain poison or bats",
-		position = 3
-	)
-	default int dotTransparency()
-	{
-		return 75;
-	}
-
-	@Range(
 		max = 27
 	)
 	@ConfigItem(
 		keyName = "dotSize",
 		name = "Dot size",
 		description = "Configures the size of the transparent dots, solid dots are one third larger",
-		position = 4
+		position = 3
 	)
 	default int dotSize()
 	{
 		return 9;
+	}
+
+	@Range(
+		max = 255
+	)
+	@ConfigItem(
+		keyName = "transparency",
+		name = "Transparency",
+		description = "Configures the transparency of the chest dots and numbers that are not likely to contain poison or bats",
+		position = 4
+	)
+	default int transparency()
+	{
+		return 75;
 	}
 
 	@ConfigItem(
