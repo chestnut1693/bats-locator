@@ -338,32 +338,32 @@ public class BatsLocator
 				chests.get(i).setNumber(i);
 			}
 
-			int[][] chestNumberSets;
+			int[][] solutionSets;
 
 			switch (roomType)
 			{
 				case LEFT:
-					chestNumberSets = ChestNumberSets.LEFT;
+					solutionSets = SolutionSets.LEFT;
 					break;
 				case RIGHT:
-					chestNumberSets = ChestNumberSets.RIGHT;
+					solutionSets = SolutionSets.RIGHT;
 					break;
 				case STRAIGHT:
-					chestNumberSets = ChestNumberSets.STRAIGHT;
+					solutionSets = SolutionSets.STRAIGHT;
 					break;
 				default:
-					chestNumberSets = new int[0][0];
+					solutionSets = new int[0][0];
 					break;
 			}
 
-			for (int[] indices : chestNumberSets)
+			for (int[] indices : solutionSets)
 			{
 				ArrayList<Chest> solutionSet = new ArrayList<>();
 				for (int index : indices)
 				{
 					solutionSet.add(chests.get(index));
 				}
-				solutionSets.add(solutionSet);
+				this.solutionSets.add(solutionSet);
 			}
 
 			for (Chest chest : this.chests.values())

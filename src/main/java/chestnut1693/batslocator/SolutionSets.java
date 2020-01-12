@@ -24,7 +24,7 @@
  */
 package chestnut1693.batslocator;
 
-public class ChestNumberSets
+public class SolutionSets
 {
 	public final static int[][] LEFT = new int[][] {
 		{ 0, 15, 16, 54},
