@@ -58,7 +58,7 @@ import net.runelite.client.ui.overlay.OverlayManager;
 	name = "Bats Locator",
 	description = "Helps locate the chest with bats at the thieving room inside Chambers of Xeric",
 	tags = {"finder", "thieving"},
-	enabledByDefault = false
+	enabledByDefault = true
 )
 public class BatsLocatorPlugin extends Plugin
 {
