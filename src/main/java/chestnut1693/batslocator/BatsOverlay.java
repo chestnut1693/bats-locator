@@ -82,7 +82,7 @@ public class BatsOverlay extends Overlay
 					continue;
 				}
 
-				if (playerLocation.distanceTo(chest.getLocation()) <= client.getScene().getDrawDistance())
+				if (playerLocation.distanceTo(chest.getLocation()) <= 25)
 				{
 					LocalPoint chestLocal = LocalPoint.fromWorld(client, chest.getLocation());
 
